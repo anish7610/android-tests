@@ -1,6 +1,6 @@
 from base import Driver
 from appium.webdriver.common.appiumby import AppiumBy
-
+import constants
 
 class AccountPage(Driver):
     package_name = "com.example.banking"
@@ -23,6 +23,10 @@ class AccountPage(Driver):
     @property
     def accounts(self):
         return self.driver.find_element(AppiumBy.ID, self.accounts_listview)
+
+
+    def get_account_type(self):
+        return self.accounts.find_elements(AppiumBy.ID, self.account_type_textfield)
 
 
     def get_account_balance(self):

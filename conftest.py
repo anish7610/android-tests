@@ -14,7 +14,8 @@ def android_driver(request):
     deviceName='emulator-5554',
     language='en',
     locale='US',
-    app='bank.apk'
+    appPackage = 'com.example.banking',
+    appActivity = '.LoginActivity'
     )
 
     appium_server_url = 'http://127.0.0.1:4723'

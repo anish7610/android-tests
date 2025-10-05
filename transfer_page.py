@@ -13,7 +13,6 @@ class TransferPage(Driver):
         self.from_account_spinner = f"{self.package_name}:id/fromAccountSpinner"
         self.to_account_number = f"{self.package_name}:id/toAccountEditText"
         self.transfer_amount = f"{self.package_name}:id/amountEditText"
-
         self.transfer_button = f"{self.package_name}:id/transferButton"
 
 
