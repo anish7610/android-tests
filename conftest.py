@@ -1,7 +1,10 @@
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
 
+from login_page import LoginPage
+
 import pytest
+
 
 
 @pytest.fixture(scope="module")
@@ -28,3 +31,11 @@ def driver(request):
 
     return driver
 
+@pytest.fixture
+def login(driver):
+    login_page = LoginPage(driver)
+
+    # Perform login
+    login_page.enter_username("sa-1")
+    login_page.enter_password("sa-1")
+    login_page.click_login_button()
