@@ -17,6 +17,13 @@ class TransactionPage(Driver):
         self.transaction_desc_textview = f"{self.package_name}:id/transactionDescriptionTextView"
         self.transaction_amount_textview = f"{self.package_name}:id/transactionAmountTextView"
         self.transaction_timestamp_textview = f"{self.package_name}:id/transactionTimestampTextView"
+        self.transaction_current_balance_textview = f"{self.package_name}:id/accountCurrentBalanceTextView"
+        self.transaction_available_balance_textview = f"{self.package_name}:id/availableBalanceTextView"
+
+
+    @property
+    def transactions(self):
+        return self.driver.find_element(AppiumBy.ID, self.transactions_listview)
 
 
     def enter_keyword(self, keyword):
@@ -47,5 +54,21 @@ class TransactionPage(Driver):
         self.click(self.filter_button)
 
 
-    def get_transactions_listview(self):
-        return self.driver.find_element(AppiumBy.ID, self.transactions_listview)
+    def get_transaction_desc(self):
+        return self.transactions.find_elements(AppiumBy.ID, self.transaction_desc_textview)
+
+
+    def get_transaction_timestamp(self):
+        return self.transactions.find_elements(AppiumBy.ID, self.transaction_timestamp_textview)
+
+
+    def get_transaction_amount(self):
+        return self.transactions.find_elements(AppiumBy.ID, self.transaction_amount_textview)
+
+
+    def get_transaction_current_balance(self):
+        return self.transactions.find_elements(AppiumBy.ID, self.transaction_current_balance_textview)
+
+
+    def get_transaction_available_balance(self):
+        return self.get_text(self.transaction_available_balance_textview)

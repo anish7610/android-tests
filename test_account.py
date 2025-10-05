@@ -6,9 +6,7 @@ def test_accounts(android_driver, login):
     
     account_page = AccountPage(android_driver)
 
-    accounts_listview = account_page.get_accounts_listview()
-
-    account_types = accounts_listview.find_elements(AppiumBy.ID, account_page.account_type_textfield)
+    account_types = account_page.accounts.find_elements(AppiumBy.ID, account_page.account_type_textfield)
 
     expected_account_types = ["Checking", "Savings"]
 
