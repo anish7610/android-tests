@@ -20,4 +20,6 @@
 
 - Run tests: pytest -v
 
-- Screen Recording - <a href="https://github.com/anpa6841/androidTests/blob/master/App Tests.mov">App Tests</a>
+### [Test Execution](https://github.com/user-attachments/assets/64e78f4b-e55a-4849-8e63-b07b90c451d5)
+
+
