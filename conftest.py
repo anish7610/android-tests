@@ -6,7 +6,6 @@ from login_page import LoginPage
 import pytest
 
 
-
 @pytest.fixture(scope="module")
 def android_driver(request):
     capabilities = dict(
@@ -31,7 +30,8 @@ def android_driver(request):
 
     return driver
 
-@pytest.fixture
+
+@pytest.fixture(scope="module")
 def login(android_driver):
     login_page = LoginPage(android_driver)
 

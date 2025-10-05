@@ -1,6 +1,17 @@
 # test_login.py
 from login_page import LoginPage
 from account_page import AccountPage
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+
+def toast_message(android_driver):
+    # Wait for the toast element to be present
+    toast_locator = (By.XPATH, '//android.widget.Toast')
+    toast_element = WebDriverWait(android_driver, 10).until(EC.presence_of_element_located(toast_locator))
+
+    return toast_element.text 
 
 
 def test_valid_login(android_driver):
@@ -20,6 +31,7 @@ def test_valid_login(android_driver):
 
     android_driver.press_keycode(4)
 
+
 def test_invalid_user(android_driver):
 
     login_page = LoginPage(android_driver)
@@ -29,10 +41,9 @@ def test_invalid_user(android_driver):
     login_page.enter_password("sa-1")
     login_page.click_login_button()
 
-    login_error_msg = login_page.get_login_error_msg()
+    actual_toast_message = toast_message(android_driver)
 
-    assert login_error_msg == "User not found"
-
+    assert actual_toast_message == "User not found"
 
 
 def test_invalid_credentials(android_driver):
@@ -44,6 +55,6 @@ def test_invalid_credentials(android_driver):
     login_page.enter_password("password")
     login_page.click_login_button()
 
-    login_error_msg = login_page.get_login_error_msg()
+    actual_toast_message = toast_message(android_driver)
 
-    assert login_error_msg == "Invalid Credentials"
+    assert actual_toast_message == "Invalid Credentials"

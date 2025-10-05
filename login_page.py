@@ -13,13 +13,16 @@ class LoginPage(Driver):
 
 
     def enter_username(self, username):
-        super().set_text(self.username_textfield, username)
+        self.set_text(self.username_textfield, username)
+
 
     def enter_password(self, password):
-        super().set_text(self.password_textfield, password)
+        self.set_text(self.password_textfield, password)
+
 
     def click_login_button(self):
-        super().click(self.login_button)
+        self.click(self.login_button)
+
 
     def get_login_error_msg(self):
-        return super().get_text(self.login_error_msg)
+        return self.get_text(self.login_error_msg)
