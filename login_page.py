@@ -1,10 +1,11 @@
-from appium.webdriver.common.appiumby import AppiumBy
+from base import Driver
 
-class LoginPage:
+class LoginPage(Driver):
     package_name = "com.example.banking"
 
     def __init__(self, driver):
-        self.driver = driver
+        super().__init__(driver)
+
         self.username_textfield = f"{self.package_name}:id/editUsernameText"
         self.password_textfield = f"{self.package_name}:id/editPasswordText"
         self.login_button = f"{self.package_name}:id/loginButton"
@@ -12,13 +13,13 @@ class LoginPage:
 
 
     def enter_username(self, username):
-        self.driver.find_element(AppiumBy.ID, self.username_textfield).send_keys(username)
+        super().set_text(self.username_textfield, username)
 
     def enter_password(self, password):
-        self.driver.find_element(AppiumBy.ID, self.password_textfield).send_keys(password)
+        super().set_text(self.password_textfield, password)
 
     def click_login_button(self):
-        self.driver.find_element(AppiumBy.ID, self.login_button).click()
+        super().click(self.login_button)
 
     def get_login_error_msg(self):
-        return self.driver.find_element(AppiumBy.ID, self.login_error_msg).text
+        return super().get_text(self.login_error_msg)

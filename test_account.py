@@ -2,9 +2,9 @@ from account_page import AccountPage
 from appium.webdriver.common.appiumby import AppiumBy
 
 
-def test_accounts(driver, login):
+def test_accounts(android_driver, login):
     
-    account_page = AccountPage(driver)
+    account_page = AccountPage(android_driver)
 
     accounts_listview = account_page.get_accounts_listview()
 

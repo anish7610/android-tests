@@ -8,7 +8,7 @@ import pytest
 
 
 @pytest.fixture(scope="module")
-def driver(request):
+def android_driver(request):
     capabilities = dict(
     platformName='Android',
     automationName='uiautomator2',
@@ -32,8 +32,8 @@ def driver(request):
     return driver
 
 @pytest.fixture
-def login(driver):
-    login_page = LoginPage(driver)
+def login(android_driver):
+    login_page = LoginPage(android_driver)
 
     # Perform login
     login_page.enter_username("sa-1")

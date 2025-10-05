@@ -3,10 +3,10 @@ from login_page import LoginPage
 from account_page import AccountPage
 
 
-def test_valid_login(driver):
+def test_valid_login(android_driver):
 
     # Open Login Page
-    login_page = LoginPage(driver)
+    login_page = LoginPage(android_driver)
 
     # Perform login
     login_page.enter_username("sa-1")
@@ -14,15 +14,15 @@ def test_valid_login(driver):
     login_page.click_login_button()
 
     # Validate Account Page
-    account_page = AccountPage(driver)
+    account_page = AccountPage(android_driver)
     welcome_message_text = account_page.get_customer_name_welcome_message()
     assert "Hello, John" == welcome_message_text
 
-    driver.press_keycode(4)
+    android_driver.press_keycode(4)
 
-def test_invalid_user(driver):
+def test_invalid_user(android_driver):
 
-    login_page = LoginPage(driver)
+    login_page = LoginPage(android_driver)
 
     # Perform login
     login_page.enter_username("bob")
@@ -35,9 +35,9 @@ def test_invalid_user(driver):
 
 
 
-def test_invalid_credentials(driver):
+def test_invalid_credentials(android_driver):
 
-    login_page = LoginPage(driver)
+    login_page = LoginPage(android_driver)
 
     # Perform login
     login_page.enter_username("sa-1")
